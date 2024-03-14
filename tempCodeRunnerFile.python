@@ -1,0 +1,22 @@
+import requests
+from bs4 import BeautifulSoup
+import time
+import csv
+while True:
+
+    url = "https://www.nseindia.com/get-quotes/equity?symbol=TCS"
+    r = requests.get(url)
+    t = time.localtime()
+    soup = BeautifulSoup(r.text,'html.parser')
+    name = soup.find('a',{'class':'nav-item nav-link active'}).text
+    price = soup.find('span',{'id':'quoteLtp'}).text
+    nsechange = soup.find('span',{'id':'priceInfoStatus'}).find_all('span')
+    change =nsechange[0].text
+    percent = nsechange[1].text
+    print(time.strftime("%H:%M:%S", t),name, price , change,percent)
+    with open(f'{name}_data.csv', mode='a', newline='') as file:
+        writer = csv.writer(file)
+        
+        # Append new data to CSV
+        writer.writerow([name, price, nsechange,time.strftime('%Y-%m-%d %H:%M:%S')])
+    time.sleep(2)
