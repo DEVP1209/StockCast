@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactSearchBox from "react-search-box";
 
-function Search({setChoice}) {
+function Search({ setChoice }) {
   const [formData, setFormData] = useState({
     inputField: "",
   });
@@ -31,7 +31,8 @@ function Search({setChoice}) {
         formData
       );
       console.log(response.data);
-      setChoice(formData.inputField)
+      
+      setChoice(formData.inputField);
     } catch (error) {
       console.error("Error sending data:", error);
     }
@@ -39,23 +40,22 @@ function Search({setChoice}) {
 
   return (
     <div className="search-container">
-      <form onSubmit={handleSubmit}>
-        {/* <input
-        type="text"
-        name="inputField"
-        value={formData.inputField}
-        onChange={(e) => setFormData({ inputField: e.target.value })}
-      /> */}
+      <h1 className="search-header">Search Stock</h1>
+      <hr/>
+      <form onSubmit={handleSubmit} className="search-form">
         {symbol && (
           <ReactSearchBox
-            placeholder="Search..."
-            name="inputField"
-            data={symbol}
-            value={formData.inputField}
-            onChange={(e) => setFormData({ inputField: e })}
+          placeholder="Search..."
+          name="inputField"
+          data={symbol}
+          value={formData.inputField}
+          onChange={(e) => setFormData({ inputField: e })}
+          inputBorderColor="rgb(23, 23, 66)"
           />
         )}
-        <button type="submit">Submit</button>
+        <button type="submit" className="submit-btn">
+          Predict
+        </button>
       </form>
     </div>
   );

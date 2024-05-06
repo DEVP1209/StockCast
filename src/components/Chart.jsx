@@ -1,15 +1,19 @@
+import { blue } from "@mui/material/colors";
 import React from "react";
 import { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
+import ReactLoading from "react-loading"
 
 export default function Chart({ choice }) {
   const [data, setData] = useState(null);
+  const [loading,setLoading] = useState(false)
 
   const fetchData = (choice) => {
     fetch(`candlestick/${choice.split(".")[0]}.json`)
       .then((response) => response.json())
       .then((jsonData) => {
         setData(jsonData);
+        setLoading(false)
         console.log("data set");
       })
       .catch((error) => {
@@ -18,9 +22,9 @@ export default function Chart({ choice }) {
   };
 
   useEffect(() => {
-    setInterval(() => {
+      setData(null)
+      // setLoading(true)
       fetchData(choice);
-    }, 1000);
   }, [choice]);
 
   const series = [
@@ -56,7 +60,7 @@ export default function Chart({ choice }) {
       align: "left",
     },
     xaxis: {
-      type: "datetime",
+      type: "category",
     },
     yaxis: {
       tooltip: {
@@ -86,7 +90,7 @@ export default function Chart({ choice }) {
 
   return (
     <div className="chart-container">
-      {data && (
+      {data ? (
         <ReactApexChart
           series={series}
           options={options}
@@ -94,7 +98,7 @@ export default function Chart({ choice }) {
           height={600}
           width={850}
         />
-      )}
+      ) : <ReactLoading type={"spin"} color={blue} height={80} width={80}  />}
       {
         // data &&
         // <p>{data[data.length - 4]["x"]}</p>

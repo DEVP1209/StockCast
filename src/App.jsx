@@ -1,15 +1,21 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import Chart from "./components/Chart";
 import Search from "./components/Search";
-
+import Header from "./components/Header";
+import News from "./components/News";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
-  const [choice, setChoice] = useState("");
+  const [choice, setChoice] = useState("RELIANCE");
 
   return (
-    <div className="main-container">
-      <Search setChoice={setChoice}/>
-      <Chart choice={choice}/>
-    </div>
+    <>
+      <Header />
+      <div className="main-container">
+        <Search setChoice={setChoice} />
+        <Chart choice={choice} />
+        <News />
+      </div>
+    </>
   );
 }
 

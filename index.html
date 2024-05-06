@@ -6,9 +6,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stock.css">
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <div class="container-outer">
+      <div class="container-inner">
+        <div class="container-width">
+          <!-- TradingView Widget BEGIN -->
+          <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <div class="tradingview-widget-copyright">
+              <a href="https://www.tradingview.com" rel="noopener" target="_blank">
+                <span class="blue-text">Quotes</span>
+              </a> by TradingView
+            </div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+              {
+                "symbols": [
+                  {
+                    "title": "S&P 500",
+                    "proName": "FX_IDC:EURUSD"
+                  },
+                  {
+                    "title": "Nasdaq 100",
+                    "proName": "INDEX:IUXX"
+                  },
+                  {
+                    "title": "EUR/USD",
+                    "proName": "FX_IDC:EURUSD"
+                  },
+                  {
+                    "title": "BTC/USD",
+                    "proName": "BITFINEX:BTCUSD"
+                  },
+                  {
+                    "title": "ETH/USD",
+                    "proName": "BITFINEX:ETHUSD"
+                  },
+                  {
+                    "title": "S&P 500",
+                    "proName": "FX_IDC:EURUSD"
+                  },
+                  {
+                    "title": "Nasdaq 100",
+                    "proName": "INDEX:IUXX"
+                  },
+                  {
+                    "title": "EUR/USD",
+                    "proName": "FX_IDC:EURUSD"
+                  },
+                  {
+                    "title": "BTC/USD",
+                    "proName": "BITFINEX:BTCUSD"
+                  },
+                  {
+                    "title": "ETH/USD",
+                    "proName": "BITFINEX:ETHUSD"
+                  },
+                  {
+                    "title": "S&P 500",
+                    "proName": "FX_IDC:EURUSD"
+                  },
+                  {
+                    "title": "Nasdaq 100",
+                    "proName": "INDEX:IUXX"
+                  },
+                  {
+                    "title": "EUR/USD",
+                    "proName": "FX_IDC:EURUSD"
+                  },
+                  {
+                    "title": "BTC/USD",
+                    "proName": "BITFINEX:BTCUSD"
+                  },
+                  {
+                    "title": "ETH/USD",
+                    "proName": "BITFINEX:ETHUSD"
+                  }
+                ],
+                  "locale": "en"
+              }
+            </script>
+          </div>
+          <!-- TradingView Widget END -->
+        </div>
+      </div>
+    </div>
   </body>
 </html>
