@@ -1,0 +1,12 @@
+import schedule
+import time
+s = "Hello"
+
+def DODO():
+    print(s)
+
+schedule.every().friday.at("09:05:00").do(DODO)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
